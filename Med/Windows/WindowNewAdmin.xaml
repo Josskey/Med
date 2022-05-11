@@ -1,0 +1,59 @@
+﻿<Window x:Class="Med.Windows.WindowNewAdmin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
+        mc:Ignorable="d"
+        x:Name="WD"
+        Height="306.081" 
+        Width="398.122"
+        WindowStyle="None" 
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen" Background="Transparent" MouseDown="WD_MouseDown">
+    <Border BorderBrush="#FF2D2D30" BorderThickness="5" CornerRadius="5">
+        <Grid Background="#FF3E4159">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0" Background="#FF2D2D30">
+                <TextBlock Margin="140,0,0,0" Text="Форма данных"/>
+                <Button Cursor="Hand" Margin="123,-5,0,0" Command="{Binding Close}" CommandParameter="{Binding ElementName=WD}" Width="20" Height="20">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Path Fill="#FFD94448" Data="M19,3H16.3H7.7H5A2,2 0 0,0 3,5V7.7V16.4V19A2,2 0 0,0 5,21H7.7H16.4H19A2,2 0 0,0 21,19V16.3V7.7V5A2,2 0 0,0 19,3M15.6,17L12,13.4L8.4,17L7,15.6L10.6,12L7,8.4L8.4,7L12,10.6L15.6,7L17,8.4L13.4,12L17,15.6L15.6,17Z"/>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+            <GroupBox Header="Данные" Grid.Column="0" Grid.Row="1" Foreground="White" FontSize="15">
+                <StackPanel Margin="5,15,10,0" >
+                    <TextBlock Text="Доктор"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox IsReadOnly="True" Width="320" Text="{Binding AdminBinding.Name}" Height="28"/>
+                        <Button Command="{Binding WDDoctor}" Content="+" Width="36"/>
+                    </StackPanel>
+
+                    <TextBlock Text="Логин"/>
+                    <TextBox Text="{Binding AdminBinding.Login}" Height="28"/>
+
+
+                    <TextBlock Text="Пароль" />
+                    <TextBox Text="{Binding AdminBinding.Password}" Height="28"/>
+
+                    <CheckBox IsChecked="{Binding CheckState}" Command="{Binding Status}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}" Foreground="White" Content="Полный"/>
+                    
+
+                </StackPanel>
+            </GroupBox>
+            <Button Command="{Binding Save}" CommandParameter="{Binding ElementName=WD}" Height="35" Grid.Row="2" Grid.Column="0"  Content="[Сохранить]" FontSize="15" Margin="257,8,5,8"/>
+        </Grid>
+    </Border>
+</Window>
